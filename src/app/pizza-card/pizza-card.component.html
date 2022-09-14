@@ -1,0 +1,20 @@
+<div class="page_main">
+  <p class="menu_header">Menu</p>
+  <div class="container-lg d-flex mt-2 pb-5">
+  <div class="row">
+    <div class="col-4 mt-4" *ngFor="let pizza of pizzaList">
+      <div class="pizza_card">
+        <img src="{{pizza.imageUrl}}" class="image"/>
+        <p class="pizza_title">{{pizza.name}}</p>
+        <p class="pizza_ingr">{{pizza.ingredients}}</p>
+        <div class="line"></div>
+        <div class="pizza_order">
+          <p class="pizza_price">Price: {{pizza.price}} BYN</p>
+          <button class="btn btn-danger rounded-3" (click)="addToOrder(pizza)">Add to busket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <app-busket [isOrderPage] = false></app-busket>
+  </div>
+</div>

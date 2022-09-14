@@ -1,0 +1,32 @@
+<div class="busket_container">
+  <img class="busket_icon" src="https://svgshare.com/i/ioi.svg">
+  <div class="busket_title" *ngIf="isDisplay; else orderblock">Choose something, and I’ll display it.</div>
+  <ng-template  #orderblock>
+    <div class="busket_items">
+      <div class="pizza-item" *ngFor="let order of orderList">
+        <div class="pizza_info">
+          <img height="50px" width="50px" src="{{order.pizza.imageUrl}}">
+          <p>{{order.pizza.name}}</p>
+        </div>
+        <div class="pizza_details">
+          <div class="amount_buttons">
+            <button class="counter_button" (click)="onMinus(order)">-</button>
+            <p class="counter">{{order.amount}}</p>
+            <button class="counter_button" (click)="onPlus(order)" style="background: #FA8F21">+</button>
+          </div>
+          <p class="total_price">{{order.pizza.price}} BYN</p>
+        </div>
+      </div>
+    </div>
+    <div class="order_submit">
+      <div class="end_price">
+        <p style="color: black; margin: 0">Total price:</p>
+        <p class="asdfsdaf">{{totalPrice}} BYN</p>
+      </div>
+      <div *ngIf="!isOrderPage" class="submit_button">
+        <a routerLink="order">Order</a>
+      </div>
+    </div>
+  </ng-template>
+</div>
+

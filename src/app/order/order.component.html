@@ -1,0 +1,46 @@
+<div class="page_content">
+  <div class="header">Order</div>
+  <div *ngIf="!isOrderComplete; else completeMessage" class="order_info">
+    <div class="order_form">Please, enter your...
+      <form [formGroup]="orderForm"  (ngSubmit)="formSend()" class="form_content">
+        <div class="form_inputs">
+          <div class="field">Name
+            <input class="form-input" id="name" formControlName="name">
+          </div>
+          <div class="field">Phone number
+            <input class="form-input" id="phoneNum" formControlName="phoneNum">
+          </div>
+        </div>
+        <div class="form_inputs" style="text-align: left; display: block">Address
+          <div class="address_inputs">
+            <div class="street">Street
+              <input class="form-input" id="street" formControlName="street">
+            </div>
+            <div class="home">Home num
+              <input class="form-input" id="homeNum" formControlName="homeNum" maxlength="2">
+            </div>
+            <div class="flat">Flat num
+              <input class="form-input" id="flatNum" formControlName="flatNum" maxlength="2">
+            </div>
+          </div>
+        </div>
+        <div class="form_inputs" style="text-align: left; display: block">Payment
+          <select class="payment_select" id="payment" formControlName="payment">
+            <option value="cash">Cash</option>
+            <option value="card">Card</option>
+          </select>
+        </div>
+        <button [disabled]="!orderForm.valid" class="submit_button" type="submit" style="font-size: 16px">Submit</button>
+      </form>
+    </div>
+    <app-busket [isOrderPage]= true [isDisplay] = false></app-busket>
+  </div>
+  <ng-template #completeMessage>
+    <div class="message_box">
+      <div class="message_content">
+        <img src="https://i.ibb.co/FsykJqF/checked.png" height="40px" width="40px">
+        <p>Your order has been confirmed! Wait for our call, and now you'll redirect to home page.</p>
+      </div>
+    </div>
+  </ng-template>
+</div>
